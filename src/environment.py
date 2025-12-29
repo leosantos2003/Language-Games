@@ -8,3 +8,21 @@ class LanguageGameEnv:
         Defines the language game.
         """
         action_name = self.actions_list[action_index]
+
+        if role == "Builder":
+            if action_name == "deliver_object":
+                return 10
+            elif action_name == "write_down":
+                return -10
+            else:
+                return -1
+            
+        elif role == "Observer":
+            if action_name == "write_down":
+                return 10
+            elif action_name == "deliver_object":
+                return -10
+            else:
+                return -1
+        
+        return 0
