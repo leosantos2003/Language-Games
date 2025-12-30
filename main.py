@@ -34,7 +34,7 @@ def main():
 
     while True:
         print("\n--- Language games demonstration ---")
-        print("  ------------------------------------")
+        print("------------------------------------")
         print("\nChoose who you want to talk to:\n")
 
         print("1. Builder")
