@@ -1,8 +1,12 @@
 # Language Games Demonstration
 
+## About
+
 This project consists of demonstrating some of the main concepts created by the philosopher Ludwig Wittgenstein in his book *Philosophical Investigations (1953)*.
 
 To demonstrate the computationally applicable nature of these concepts, two agents were created and subjected to the Q-Learning reinforcement learning algorithm, resulting in different reactions to the same inputs. This procedure will serve as a basis for demonstrating the following Wittgensteinian concepts: language games and their multiplicity, the example of builders, the meaning of language as use, and language learning as training.
+
+## Theoretical foundation
 
 First, two agents were created, named "Constructor" and "Observer." Their names were inspired by passages where Wittgenstein cites examples of primitive and restricted languages, which have different functions adapted to the context in which they are used.
 
@@ -46,3 +50,19 @@ In conclusion, we have here not only the training described by Wittgenstein bein
 >§6. [...] But if the ostensive teaching has this effect,—am I to say that it effects can understanding of the word? Don't you understand the call "Slab!" if you act upon it in such-and-such a way?—Doubtless the ostensive teaching helped to bring this about; but only together with a particular training. With different training the same ostensive teaching of these words would have effected a quite different understanding.
 
 >§43. For a large class of cases—though not for all—in which we employ the word "meaning" it can be defined thus: the meaning of a word is its use in the language.
+
+## Technical details
+
+Agent learning during Q-Learning simply involves updating the values ​​in a lookup table called the Q-Table at each interaction using the Bellman Equation. The agent adjusts its previous estimate based on new experience (time difference error).
+
+The Q-Table has rows representing States (S), columns representing Actions (A), and cells that store the Q-Value, which represents the expected future reward if the agent makes that decision in that state. Initially, the table starts from zero.
+
+Bellman Equation: $$Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]$$
+
+Where:
+* $$Q_*(s, a)$$: the current value that the agent believes the stock has.
+* $$\alpha$$: the learning rate (how much the agent accepts new information vs. how much it retains old information).
+* $$r$$: the immediate reward received (+10, -10).
+* $$\gamma$$: the discount factor (how much the agent values ​​future rewards compared to immediate ones).
+* $$\max_{a'} Q(s', a')$$:the estimate of the best possible reward in the next state ("looking to the future").
+
