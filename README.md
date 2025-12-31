@@ -55,7 +55,7 @@ When interacting with newly trained agents, they will offer different responses 
 
 ## Technical details
 
-### Q-Larning
+### Q-Learning
 
 Agent learning during Q-Learning simply involves updating the values ​​in a lookup table called the Q-Table at each interaction using the Bellman Equation. The agent adjusts its previous estimate based on new experience (time difference error).
 
