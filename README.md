@@ -4,7 +4,7 @@
 
 This project consists of demonstrating some of the main concepts created by the philosopher Ludwig Wittgenstein in his book *Philosophical Investigations (1953)*.
 
-To demonstrate the computationally applicable nature of these concepts, two agents were created and subjected to the Q-Learning reinforcement learning algorithm, resulting in different reactions to the same inputs. This procedure will serve as a basis for demonstrating the following Wittgensteinian concepts: language games and their multiplicity, the example of builders, the meaning of language as use, and language learning as training.
+To demonstrate the computationally applicable nature of these concepts, two agents were created and subjected to the Q-Learning reinforcement learning algorithm, resulting in different reactions to the same inputs. This procedure will serve as a basis for demonstrating the following Wittgensteinian concepts: the primitive language of builders, language games and their multiplicity, the meaning of language as use, and language learning as training.
 
 ## Theoretical foundation
 
@@ -30,9 +30,9 @@ This excerpt also allows us to extract the main intention of our demonstration: 
 
 The Builder was trained to react to the three expressions as orders or commands, while the Observer reacts to them as data or records.
 
-If the user says "Slab!" to the Builder, it will receive the message that the Builder has given it a slab. This happens because the Builder operates in its own language game where the expression "Slab!" means to it the command "Give me a slab." or something similar.
+If the user says "Slab!" to the Builder, they will receive the message that the Builder has given it a slab. This happens because the Builder operates in its own language game where the expression "Slab!" means the command "Give me a slab." or something similar.
 
-If the user says "Slab!" to the Observer, it will receive a message that the Observer has recorded their observation. This happens because the Observer also operates within its own language game, where the expression "Slab!" means to it "I spotted a slab; you can record it." or something similar.
+If the user says "Slab!" to the Observer, they will receive a message that the Observer has recorded their observation. This happens because the Observer also operates within its own language game, where the expression "Slab!" means "I spotted a slab; you may register the occurrence." or something similar.
 
 In fact, we have here a clear example of how the same word has different meanings for agents; they operate under different language games, as they associate language with different actions.
 
@@ -40,14 +40,16 @@ In fact, we have here a clear example of how the same word has different meaning
 
 Let's reiterate the training the agents underwent; after all, it would be too simple to assign a sequence of conditionals to easily obtain the desired responses from the agents to the inputs.
 
-To demonstrate Wittgenstein's idea that language learning occurs through training in its use, the agents went through the Q-Learning algorithm. During the training loop, the Builder gained points (+10) when it issued the message to "deliver the object," while the Observer gained points when it issued the message to "record the occurrence of the object." Both agents lost points (-10) whenever they issued the opposite message, that is, the message of their counterpart (for example, Builder emits the Observer's message).
+To demonstrate Wittgenstein's idea that language learning occurs through training in its use, the agents went through the Q-Learning algorithm. During the training loop, the Builder gained points (+10) when it issued the message to "deliver the object," while the Observer gained points when it issued the message to "register (write down) the occurrence of the object." Both agents lost points (-10) whenever they issued the opposite message, that is, the message of their counterpart (for example, Builder emits the Observer's message).
 
 >§5. [...] A child uses such primitive forms of language when it learns to talk. Here the teaching of language is not explanation, but training.
 >§6. [...] The children are brought up to perform these actions, to use these words as they do so, and to react in this way to the words of others.
 
 In conclusion, we have here not only the training described by Wittgenstein being expressed computationally, but also the meaning of words emerging through their use by agents. Meaning is the reaction (output) given a stimulus (input), a fundamental characteristic of Q-Learning.
 
->§6. [...] But if the ostensive teaching has this effect,—am I to say that it effects can understanding of the word? Don't you understand the call "Slab!" if you act upon it in such-and-such a way?—Doubtless the ostensive teaching helped to bring this about; but only together with a particular training. With different training the same ostensive teaching of these words would have effected a quite different understanding.
+When interacting with newly trained agents, they will offer different responses to the same input, as determined by the Q-Table. The words (inputs) will be the same, but their use (output) has changed. Therefore, their meaning has also changed.
+
+>§6. [...] But if the ostensive teaching has this effect,—am I to say that it effects an understanding of the word? Don't you understand the call "Slab!" if you act upon it in such-and-such a way?—Doubtless the ostensive teaching helped to bring this about; but only together with a particular training. With different training the same ostensive teaching of these words would have effected a quite different understanding.
 
 >§43. For a large class of cases—though not for all—in which we employ the word "meaning" it can be defined thus: the meaning of a word is its use in the language.
 
