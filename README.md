@@ -76,7 +76,7 @@ To learn, the algorithm uses the ϵ-greedy strategy:
 
 ### Final Q-Tables
 
-The Q-Tables are printed in the terminal after training. In this project, the States (S) are the words "heard" by the agent ("Slab!", "Block!", "Pillar!").
+The Q-Tables are printed in the terminal after training. In this project, the States (S) are the words "heard" by the agent ("Slab!", "Block!", "Pillar!") and the Actions (A) are the responses by the agent ("deliver object", "write it down", "ignore").
 
 ```console
 --- Builder's Q-Table ---
