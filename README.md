@@ -53,16 +53,118 @@ In conclusion, we have here not only the training described by Wittgenstein bein
 
 ## Technical details
 
+### Q-Larning
+
 Agent learning during Q-Learning simply involves updating the values ​​in a lookup table called the Q-Table at each interaction using the Bellman Equation. The agent adjusts its previous estimate based on new experience (time difference error).
 
 The Q-Table has rows representing States (S), columns representing Actions (A), and cells that store the Q-Value, which represents the expected future reward if the agent makes that decision in that state. Initially, the table starts from zero.
 
-Bellman Equation: $$Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]$$
+**Bellman Equation:**
+
+* $$Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]$$
 
 Where:
-* $$Q_*(s, a)$$: the current value that the agent believes the stock has.
-* $$\alpha$$: the learning rate (how much the agent accepts new information vs. how much it retains old information).
-* $$r$$: the immediate reward received (+10, -10).
-* $$\gamma$$: the discount factor (how much the agent values ​​future rewards compared to immediate ones).
-* $$\max_{a'} Q(s', a')$$:the estimate of the best possible reward in the next state ("looking to the future").
+* **$$Q_*(s, a)$$:** the current value that the agent believes the stock has.
+* **$$\alpha$$:** the learning rate (how much the agent accepts new information vs. how much it retains old information).
+* **$$r$$:** the immediate reward received (+10, -10).
+* **$$\gamma$$:** the discount factor (how much the agent values ​​future rewards compared to immediate ones).
+* **$$\max_{a'} Q(s', a')$$:** the estimate of the best possible reward in the next state ("looking to the future").
+
+To learn, the algorithm uses the ϵ-greedy strategy:
+* **Exploration:** the agent chooses a random action to discover new possibilities (with probability ϵ).
+* **Exploitation:** the agent chooses the action with the highest known value Q in the table to maximize the reward (with probability 1−ϵ).
+
+### Final Q-Tables
+
+The Q-Tables are printed in the terminal after training. In this project, the States (S) are the words "heard" by the agent ("Slab!", "Block!", "Pillar!").
+
+```console
+--- Builder's Q-Table ---
+Word 'Slab!': [78.07627306 19.52232585 10.51825782]
+Word 'Block!': [79.15075383 16.71459898 19.19453344]
+Word 'Pillar!': [79.97229731 15.08639162 29.67208442]
+
+--- Observer's Q-Table ---
+Word 'Slab!': [22.58448188 77.40518445 19.81511142]
+Word 'Block!': [ 7.75316181 78.29551033 28.3985238 ]
+Word 'Pillar!': [10.94437546 80.56714011 19.45843349]
+```
+
+### Interaction in the terminal
+
+Interacting with the Builder:
+
+```console
+--- Language games demonstration ---
+------------------------------------
+
+Choose who you want to talk to:
+
+1. Builder
+2. Observer
+3. See Q-Table
+0. Exit
+
+Enter the option number: 1
+
+---Talking to Builder ---
+What will you say? (enter the option number)
+1. Slab!
+2. Block!
+3. Pillar!
+
+Option: 1
+
+You said: 'Slab!'
+
+>>> Reaction:
+
+    Builder delivers you the physical object.
+
+    (Meaning for the Builder >>> COMMAND.)
+
+[Press Enter to return to the menu]
+```
+
+Interacting with the Observer:
+
+```console
+--- Language games demonstration ---
+------------------------------------
+
+Choose who you want to talk to:
+
+1. Builder
+2. Observer
+3. See Q-Table
+0. Exit
+
+Enter the option number: 2
+
+---Talking to Observer ---
+What will you say? (enter the option number)
+1. Slab!
+2. Block!
+3. Pillar!
+
+Option: 3
+
+You said: 'Pillar!'
+
+>>> Reaction:
+
+    Observer writes it down.
+
+    (Meaning for the Observer >>> DATA/REGISTER.)
+
+[Press Enter to return to the menu]
+```
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## Contact
+
+Leonardo Santos - <leorsantos2003@gmail.com>
 
