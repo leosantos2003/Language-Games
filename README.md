@@ -8,9 +8,9 @@ To demonstrate the computationally applicable nature of these concepts, two agen
 
 ## Theoretical foundation
 
-First, two agents were created, named "Constructor" and "Observer." Their names were inspired by passages where Wittgenstein cites examples of primitive and restricted languages, which have different functions adapted to the context in which they are used.
+First, two agents were created, named "Builder" and "Observer." Their names were inspired by passages where Wittgenstein cites examples of primitive and restricted languages, which have different functions adapted to the context in which they are used.
 
-The Constructor was taken from this passage, where it is explicitly stated:
+The Builder was taken from this passage, where it is explicitly stated:
 
 >§2. That philosophical concept of meaning has its place in a primitive idea of the way language functions. But one can also say that it is the idea of a language more primitive than ours.
 >Let us imagine a language for which the description given by Augustine is right. The language is meant to serve for communication between a builder A and an assistant B. A is building with building-stones: there are blocks, pillars, slabs and beams. B has to pass the stones, and that in the order in which A needs them. For this purpose they use a language consisting of the words "block", "pillar", "slab", "beam". A calls them out;—B brings the stone which he has learnt to bring at such-and-such a call.——Conceive this as a complete primitive language.
@@ -28,9 +28,9 @@ The Observer, in turn, was created based on the following excerpt, which cites e
 
 This excerpt also allows us to extract the main intention of our demonstration: to train two agents to operate under two distinct language games. After training, the user can interact with the agents through the terminal, choosing the agent they want to interact with and selecting from three expressions to "speak" to the agent, representing a primitive form of language.
 
-The Constructor was trained to react to the three expressions as orders or commands, while the Observer reacts to them as data or records.
+The Builder was trained to react to the three expressions as orders or commands, while the Observer reacts to them as data or records.
 
-If the user says "Slab!" to the Constructor, it will receive the message that the Constructor has given it a slab. This happens because the Constructor operates in its own language game where the expression "Slab!" means to it the command "Give me a slab." or something similar.
+If the user says "Slab!" to the Builder, it will receive the message that the Builder has given it a slab. This happens because the Builder operates in its own language game where the expression "Slab!" means to it the command "Give me a slab." or something similar.
 
 If the user says "Slab!" to the Observer, it will receive a message that the Observer has recorded their observation. This happens because the Observer also operates within its own language game, where the expression "Slab!" means to it "I spotted a slab; you can record it." or something similar.
 
@@ -40,7 +40,7 @@ In fact, we have here a clear example of how the same word has different meaning
 
 Let's reiterate the training the agents underwent; after all, it would be too simple to assign a sequence of conditionals to easily obtain the desired responses from the agents to the inputs.
 
-To demonstrate Wittgenstein's idea that language learning occurs through training in its use, the agents went through the Q-Learning algorithm. During the training loop, the Constructor gained points (+10) when it issued the message to "deliver the object," while the Observer gained points when it issued the message to "record the occurrence of the object." Both agents lost points (-10) whenever they issued the opposite message, that is, the message of their counterpart (for example, Constructor emits the Observer's message).
+To demonstrate Wittgenstein's idea that language learning occurs through training in its use, the agents went through the Q-Learning algorithm. During the training loop, the Builder gained points (+10) when it issued the message to "deliver the object," while the Observer gained points when it issued the message to "record the occurrence of the object." Both agents lost points (-10) whenever they issued the opposite message, that is, the message of their counterpart (for example, Builder emits the Observer's message).
 
 >§5. [...] A child uses such primitive forms of language when it learns to talk. Here the teaching of language is not explanation, but training.
 >§6. [...] The children are brought up to perform these actions, to use these words as they do so, and to react in this way to the words of others.
