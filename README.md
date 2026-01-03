@@ -83,10 +83,6 @@ graph TD
         Pos2 --> QT2[Q-Table 2]
         Neg2 --> QT2
     end
-
-    %% --- ESTILOS ---
-    classDef highlight fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    class Start,QT1,QT2 highlight;
 ```
 
 ```mermaid
@@ -109,15 +105,6 @@ graph TD
         T_Ag1 --> FinalX[Output: X]
         T_Ag2 --> FinalY[Output: Y]
     end
-
-    %% --- ESTILOS ---
-    %% Estilo para o novo Início (redondo e destacado)
-    classDef startStyle fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    class NewStart startStyle;
-
-    %% Estilo para o nó Usuário (destacado)
-    classDef userStyle fill:#e1e1e1,stroke:#333,stroke-width:2px;
-    class User userStyle;
 ```
 ## Technical details
 
