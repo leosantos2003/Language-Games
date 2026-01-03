@@ -56,7 +56,51 @@ When interacting with newly trained agents, they will offer different responses 
 ## Diagram
 
 ```mermaid
-Gostei, mas quero uma pequena mudança: quero que antes dos termos "-10", "-10" se conectarem ao termo "Terminal", eles se conectem, ainda dentro da área "Q-Learning", a um termo chamado Q-Table1 (os "+10" e "-10" da esquerda) e a um termo chamado Q-Table1 (os "+10" e "-10" da direita). Após isso, ambos os termos "Q-Table" se conectam ao termo "Terminal".
+graph TD
+    %% --- INÍCIO ---
+    Start((Início)) --> Ag1{Agente 1}
+    Start --> Ag2{Agente 2}
+
+    %% --- ÁREA Q-LEARNING ---
+    subgraph Q_Learning [Q-Learning]
+        direction TB
+        
+        %% Caminho da Esquerda (Agente 1)
+        Ag1 --> InputZ_A1[Input: Z]
+        InputZ_A1 -- Output: X --> Pos1[+10]
+        InputZ_A1 -- Output: Y --> Neg1[-10]
+        
+        %% Nova Conexão: Agente 1 atualiza a Q-Table 1
+        Pos1 --> QT1[Q-Table 1]
+        Neg1 --> QT1
+
+        %% Caminho da Direita (Agente 2)
+        Ag2 --> InputZ_A2[Input: Z]
+        InputZ_A2 -- Output: Y --> Pos2[+10]
+        InputZ_A2 -- Output: X --> Neg2[-10]
+
+        %% Nova Conexão: Agente 2 atualiza a Q-Table 2
+        Pos2 --> QT2[Q-Table 2]
+        Neg2 --> QT2
+    end
+
+    %% --- TRANSIÇÃO ---
+    %% Agora quem se conecta ao Terminal são as Q-Tables
+    QT1 --> Term[Terminal]
+    QT2 --> Term
+
+    %% --- ÁREA TERMINAL ---
+    Term --> Term_Input[Input: Z]
+    Term_Input --> T_Ag1{Agente 1}
+    Term_Input --> T_Ag2{Agente 2}
+    
+    T_Ag1 --> FinalX[Output: X]
+    T_Ag2 --> FinalY[Output: Y]
+
+    %% --- ESTILOS ---
+    classDef default fill:#fff,stroke:#333,stroke-width:1px;
+    classDef highlight fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    class Start,Term,QT1,QT2 highlight;
 ```
 
 ## Technical details
