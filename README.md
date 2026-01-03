@@ -83,6 +83,12 @@ graph TD
         Pos2 --> QT2[Observer's Q-Table]
         Neg2 --> QT2
     end
+
+    %% --- DEFINIÇÃO DE ESTILOS SUAVES ---
+    %% Verde claro para positivo
+    classDef greenish fill:#e8f5e9,stroke:#a5d6a7,stroke-width:1px;
+    %% Vermelho claro para negativo
+    classDef reddish fill:#ffebee,stroke:#ef9a9a,stroke-width:1px;
 ```
 
 ```mermaid
