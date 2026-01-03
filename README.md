@@ -84,11 +84,12 @@ graph TD
         Neg2 --> QT2
     end
 
-    %% --- DEFINIÇÃO DE ESTILOS SUAVES ---
-    %% Verde claro para positivo
-    classDef greenish fill:#e8f5e9,stroke:#a5d6a7,stroke-width:1px;
-    %% Vermelho claro para negativo
-    classDef reddish fill:#ffebee,stroke:#ef9a9a,stroke-width:1px;
+    %% --- DEFINIÇÃO DE ESTILOS FORTES ---
+    %% Verde mais intenso com borda e texto verde-escuro
+    classDef greenish fill:#b2fab4,stroke:#006400,stroke-width:2px,color:#004d00;
+    
+    %% Vermelho mais intenso com borda e texto vermelho-escuro
+    classDef reddish fill:#ffb3b3,stroke:#8b0000,stroke-width:2px,color:#800000;
 ```
 
 ```mermaid
