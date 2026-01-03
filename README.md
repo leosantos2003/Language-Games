@@ -56,57 +56,44 @@ When interacting with newly trained agents, they will offer different responses 
 ## Diagram
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    participant Env as Ambiente (Input Z)
-    participant A1 as Agente 1
-    participant A2 as Agente 2
+graph TD
+    %% Nó de Início
+    Start((Início)) --> Ag1{Agente 1}
+    Start --> Ag2{Agente 2}
 
-    %% FASE 1: Q-LEARNING
-    rect rgb(230, 240, 255)
-        note right of Env: FASE: Q-Learning (Treinamento)
+    %% Subgráfico de Q-Learning
+    subgraph Q_Learning [Q-Learning]
+        direction TB
         
-        %% Interação com Agente 1
-        Env->>A1: Envia Input "Z"
+        %% Lógica do Agente 1
+        Ag1 --> InputZ_A1[Input: Z]
+        InputZ_A1 -- Output: X --> Pos1[+10]
+        InputZ_A1 -- Output: Y --> Neg1[-10]
         
-        alt Agente 1 Tenta Output "X"
-            A1->>Env: Output "X"
-            Env-->>A1: Recompensa: +10 Pontos
-        else Agente 1 Tenta Output "Y"
-            A1->>Env: Output "Y"
-            Env-->>A1: Penalidade: -10 Pontos
-        end
-
-        %% Interação com Agente 2
-        Env->>A2: Envia Input "Z"
-        
-        alt Agente 2 Tenta Output "Y"
-            A2->>Env: Output "Y"
-            Env-->>A2: Recompensa: +10 Pontos
-        else Agente 2 Tenta Output "X"
-            A2->>Env: Output "X"
-            Env-->>A2: Penalidade: -10 Pontos
-        end
+        %% Lógica do Agente 2
+        Ag2 --> InputZ_A2[Input: Z]
+        InputZ_A2 -- Output: Y --> Pos2[+10]
+        InputZ_A2 -- Output: X --> Neg2[-10]
     end
 
-    %% FASE 2: TERMINAL
-    rect rgb(240, 255, 240)
-        note right of Env: FASE: Terminal (Execução)
-        
-        %% Execução Final Agente 1
-        Env->>A1: Envia Input "Z"
-        activate A1
-        Note over A1: Comportamento Aprendido
-        A1->>Env: Entrega Output "X"
-        deactivate A1
+    %% Transição para a Fase Terminal
+    Pos1 --> Term[Terminal]
+    Neg1 --> Term
+    Pos2 --> Term
+    Neg2 --> Term
 
-        %% Execução Final Agente 2
-        Env->>A2: Envia Input "Z"
-        activate A2
-        Note over A2: Comportamento Aprendido
-        A2->>Env: Entrega Output "Y"
-        deactivate A2
-    end
+    %% Fase Terminal
+    Term --> Term_Input[Input: Z]
+    Term_Input --> T_Ag1{Agente 1}
+    Term_Input --> T_Ag2{Agente 2}
+    
+    T_Ag1 --> FinalX[Output: X]
+    T_Ag2 --> FinalY[Output: Y]
+
+    %% Definição de Estilos
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef subgraph_style fill:#fff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    class Q_Learning subgraph_style;
 ```
 
 ## Technical details
