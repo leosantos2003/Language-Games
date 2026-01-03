@@ -53,6 +53,54 @@ When interacting with newly trained agents, they will offer different responses 
 
 >§43. For a large class of cases—though not for all—in which we employ the word "meaning" it can be defined thus: the meaning of a word is its use in the language.
 
+## Diagram
+
+```mermaid
+graph TD
+    %% Início do fluxo
+    Start((Início)) --> EnterQL[Entrada na Área Q-Learning]
+
+    %% Área de Q-Learning
+    subgraph Q_Learning [Área: Q-Learning]
+        direction TB
+        
+        %% Caminho do Agente 1
+        EnterQL --> InputZ_A1[Input: Z]
+        InputZ_A1 --> Ag1{Agente 1}
+        Ag1 -- Output X --> Pos1[+10 Pontos]:::good
+        Ag1 -- Output Y --> Neg1[-10 Pontos]:::bad
+        
+        %% Caminho do Agente 2
+        EnterQL --> InputZ_A2[Input: Z]
+        InputZ_A2 --> Ag2{Agente 2}
+        Ag2 -- Output Y --> Pos2[+10 Pontos]:::good
+        Ag2 -- Output X --> Neg2[-10 Pontos]:::bad
+    end
+
+    %% Transição para a próxima área
+    Pos1 --> EnterTerm[Entrada na Área Terminal]
+    Neg1 --> EnterTerm
+    Pos2 --> EnterTerm
+    Neg2 --> EnterTerm
+
+    %% Área Terminal
+    subgraph Terminal [Área: Terminal]
+        direction TB
+        EnterTerm --> Term_Input[Input: Z]
+        
+        Term_Input --> T_Ag1[Agente 1]
+        T_Ag1 --> Final1[Entrega: X]:::result
+        
+        Term_Input --> T_Ag2[Agente 2]
+        T_Ag2 --> Final2[Entrega: Y]:::result
+    end
+
+    %% Definição de Estilos
+    classDef good fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724;
+    classDef bad fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#721c24;
+    classDef result fill:#e2e3e5,stroke:#383d41,stroke-width:2px,stroke-dasharray: 5 5;
+```
+
 ## Technical details
 
 ### Q-Learning
