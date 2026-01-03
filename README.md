@@ -1,10 +1,10 @@
-# Language Games Demonstration
+# Language Games
 
 ## About
 
 This project consists of demonstrating some of the main concepts created by the philosopher Ludwig Wittgenstein in his book *Philosophical Investigations (1953)*.
 
-To demonstrate the computationally applicable nature of these concepts, two agents were created and subjected to the Q-Learning reinforcement learning algorithm, resulting in different reactions to the same inputs. This procedure will serve as a basis for demonstrating the following Wittgensteinian concepts: the primitive language of builders, language games and their multiplicity, the meaning of language as use, and language learning as training.
+To demonstrate the computationally applicable nature of these concepts, two agents were created and subjected to the Q-Learning reinforcement learning algorithm, resulting in different reactions to the same inputs. This procedure will serve as a basis for demonstrating the following Wittgensteinian concepts: primitive language use, language games and their multiplicity, the meaning of language as use, and language learning as training.
 
 **This is merely an exercise in exploring intersections between Computer Science and other fields of knowledge. It is subject to disagreements and more rigorous technical analysis.**
 
