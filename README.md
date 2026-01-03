@@ -47,7 +47,7 @@ To demonstrate Wittgenstein's idea that language learning occurs through trainin
 >§5. [...] A child uses such primitive forms of language when it learns to talk. Here the teaching of language is not explanation, but training.
 >§6. [...] The children are brought up to perform these actions, to use these words as they do so, and to react in this way to the words of others.
 
-In conclusion, we have here not only the training described by Wittgenstein being expressed computationally, but also the meaning of words emerging through their use by agents. Meaning is the reaction (output) given a stimulus (input), a fundamental characteristic of Q-Learning.
+In conclusion, we have here not only the training described by Wittgenstein being expressed computationally, but also the meaning of words emerging through their use by agents. For the philosopher, meaning is the reaction (output) given a stimulus (input), which is also a fundamental characteristic of Q-Learning.
 
 When interacting with newly trained agents, they will offer different responses to the same input, as determined by the Q-Table. The words (inputs) will be the same, but their use (output) has changed. Therefore, their meaning has also changed.
 
