@@ -91,20 +91,33 @@ graph TD
 
 ```mermaid
 graph TD
-    %% --- ÁREA TERMINAL ---
-    Term[Terminal] --> Term_Input[Input: Z]
-    
-    %% Decisões Finais
-    Term_Input --> T_Ag1{Agente 1}
-    Term_Input --> T_Ag2{Agente 2}
-    
-    %% Outputs Finais
-    T_Ag1 --> FinalX[Output: X]
-    T_Ag2 --> FinalY[Output: Y]
+    %% --- NÓ EXTERNO ---
+    %% Nó "Início" fora da área, conectando-se ao "Usuário" dentro
+    NewStart((Início)) --> User[Usuário]
+
+    %% --- NOVA ÁREA TERMINAL ---
+    subgraph TerminalArea [Terminal]
+        direction TB
+        %% O antigo nó "Terminal" agora é "Usuário" e está aqui dentro
+        User --> Term_Input[Input: Z]
+        
+        %% Decisões Finais
+        Term_Input --> T_Ag1{Agente 1}
+        Term_Input --> T_Ag2{Agente 2}
+        
+        %% Outputs Finais
+        T_Ag1 --> FinalX[Output: X]
+        T_Ag2 --> FinalY[Output: Y]
+    end
 
     %% --- ESTILOS ---
-    classDef highlight fill:#e1e1e1,stroke:#333,stroke-width:2px;
-    class Term highlight;
+    %% Estilo para o novo Início (redondo e destacado)
+    classDef startStyle fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    class NewStart startStyle;
+
+    %% Estilo para o nó Usuário (destacado)
+    classDef userStyle fill:#e1e1e1,stroke:#333,stroke-width:2px;
+    class User userStyle;
 ```
 ## Technical details
 
