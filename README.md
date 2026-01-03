@@ -56,49 +56,57 @@ When interacting with newly trained agents, they will offer different responses 
 ## Diagram
 
 ```mermaid
-graph TD
-    %% Início do fluxo
-    Start((Início)) --> EnterQL[Entrada na Área Q-Learning]
+sequenceDiagram
+    autonumber
+    participant Env as Ambiente (Input Z)
+    participant A1 as Agente 1
+    participant A2 as Agente 2
 
-    %% Área de Q-Learning
-    subgraph Q_Learning [Área: Q-Learning]
-        direction TB
+    %% FASE 1: Q-LEARNING
+    rect rgb(230, 240, 255)
+        note right of Env: FASE: Q-Learning (Treinamento)
         
-        %% Caminho do Agente 1
-        EnterQL --> InputZ_A1[Input: Z]
-        InputZ_A1 --> Ag1{Agente 1}
-        Ag1 -- Output X --> Pos1[+10 Pontos]:::good
-        Ag1 -- Output Y --> Neg1[-10 Pontos]:::bad
+        %% Interação com Agente 1
+        Env->>A1: Envia Input "Z"
         
-        %% Caminho do Agente 2
-        EnterQL --> InputZ_A2[Input: Z]
-        InputZ_A2 --> Ag2{Agente 2}
-        Ag2 -- Output Y --> Pos2[+10 Pontos]:::good
-        Ag2 -- Output X --> Neg2[-10 Pontos]:::bad
+        alt Agente 1 Tenta Output "X"
+            A1->>Env: Output "X"
+            Env-->>A1: Recompensa: +10 Pontos
+        else Agente 1 Tenta Output "Y"
+            A1->>Env: Output "Y"
+            Env-->>A1: Penalidade: -10 Pontos
+        end
+
+        %% Interação com Agente 2
+        Env->>A2: Envia Input "Z"
+        
+        alt Agente 2 Tenta Output "Y"
+            A2->>Env: Output "Y"
+            Env-->>A2: Recompensa: +10 Pontos
+        else Agente 2 Tenta Output "X"
+            A2->>Env: Output "X"
+            Env-->>A2: Penalidade: -10 Pontos
+        end
     end
 
-    %% Transição para a próxima área
-    Pos1 --> EnterTerm[Entrada na Área Terminal]
-    Neg1 --> EnterTerm
-    Pos2 --> EnterTerm
-    Neg2 --> EnterTerm
+    %% FASE 2: TERMINAL
+    rect rgb(240, 255, 240)
+        note right of Env: FASE: Terminal (Execução)
+        
+        %% Execução Final Agente 1
+        Env->>A1: Envia Input "Z"
+        activate A1
+        Note over A1: Comportamento Aprendido
+        A1->>Env: Entrega Output "X"
+        deactivate A1
 
-    %% Área Terminal
-    subgraph Terminal [Área: Terminal]
-        direction TB
-        EnterTerm --> Term_Input[Input: Z]
-        
-        Term_Input --> T_Ag1[Agente 1]
-        T_Ag1 --> Final1[Entrega: X]:::result
-        
-        Term_Input --> T_Ag2[Agente 2]
-        T_Ag2 --> Final2[Entrega: Y]:::result
+        %% Execução Final Agente 2
+        Env->>A2: Envia Input "Z"
+        activate A2
+        Note over A2: Comportamento Aprendido
+        A2->>Env: Entrega Output "Y"
+        deactivate A2
     end
-
-    %% Definição de Estilos
-    classDef good fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724;
-    classDef bad fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#721c24;
-    classDef result fill:#e2e3e5,stroke:#383d41,stroke-width:2px,stroke-dasharray: 5 5;
 ```
 
 ## Technical details
