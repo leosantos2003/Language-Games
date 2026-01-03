@@ -65,44 +65,47 @@ graph TD
     subgraph Q_Learning [Q-Learning]
         direction TB
         
-        %% Caminho da Esquerda (Agente 1)
+        %% Caminho do Agente 1
         Ag1 --> InputZ_A1[Input: Z]
         InputZ_A1 -- Output: X --> Pos1[+10]
         InputZ_A1 -- Output: Y --> Neg1[-10]
         
-        %% Nova Conexão: Agente 1 atualiza a Q-Table 1
+        %% Agente 1 atualiza a Q-Table 1
         Pos1 --> QT1[Q-Table 1]
         Neg1 --> QT1
 
-        %% Caminho da Direita (Agente 2)
+        %% Caminho do Agente 2
         Ag2 --> InputZ_A2[Input: Z]
         InputZ_A2 -- Output: Y --> Pos2[+10]
         InputZ_A2 -- Output: X --> Neg2[-10]
 
-        %% Nova Conexão: Agente 2 atualiza a Q-Table 2
+        %% Agente 2 atualiza a Q-Table 2
         Pos2 --> QT2[Q-Table 2]
         Neg2 --> QT2
     end
 
-    %% --- TRANSIÇÃO ---
-    %% Agora quem se conecta ao Terminal são as Q-Tables
-    QT1 --> Term[Terminal]
-    QT2 --> Term
+    %% --- ESTILOS ---
+    classDef highlight fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    class Start,QT1,QT2 highlight;
+```
 
+```mermaid
+graph TD
     %% --- ÁREA TERMINAL ---
-    Term --> Term_Input[Input: Z]
+    Term[Terminal] --> Term_Input[Input: Z]
+    
+    %% Decisões Finais
     Term_Input --> T_Ag1{Agente 1}
     Term_Input --> T_Ag2{Agente 2}
     
+    %% Outputs Finais
     T_Ag1 --> FinalX[Output: X]
     T_Ag2 --> FinalY[Output: Y]
 
     %% --- ESTILOS ---
-    classDef default fill:#fff,stroke:#333,stroke-width:1px;
-    classDef highlight fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    class Start,Term,QT1,QT2 highlight;
+    classDef highlight fill:#e1e1e1,stroke:#333,stroke-width:2px;
+    class Term highlight;
 ```
-
 ## Technical details
 
 ### Q-Learning
