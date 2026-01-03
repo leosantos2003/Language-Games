@@ -56,7 +56,7 @@ When interacting with newly trained agents, they will offer different responses 
 ## Diagram
 
 ```mermaid
-graph TD
+graph LR
     %% Início do fluxo
     Start((Início)) --> EnterQL[Entrada na Área Q-Learning]
 
