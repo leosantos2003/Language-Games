@@ -56,44 +56,7 @@ When interacting with newly trained agents, they will offer different responses 
 ## Diagram
 
 ```mermaid
-graph TD
-    %% Nó de Início
-    Start((Início)) --> Ag1{Agente 1}
-    Start --> Ag2{Agente 2}
-
-    %% Subgráfico de Q-Learning
-    subgraph Q_Learning [Q-Learning]
-        direction TB
-        
-        %% Lógica do Agente 1
-        Ag1 --> InputZ_A1[Input: Z]
-        InputZ_A1 -- Output: X --> Pos1[+10]
-        InputZ_A1 -- Output: Y --> Neg1[-10]
-        
-        %% Lógica do Agente 2
-        Ag2 --> InputZ_A2[Input: Z]
-        InputZ_A2 -- Output: Y --> Pos2[+10]
-        InputZ_A2 -- Output: X --> Neg2[-10]
-    end
-
-    %% Transição para a Fase Terminal
-    Pos1 --> Term[Terminal]
-    Neg1 --> Term
-    Pos2 --> Term
-    Neg2 --> Term
-
-    %% Fase Terminal
-    Term --> Term_Input[Input: Z]
-    Term_Input --> T_Ag1{Agente 1}
-    Term_Input --> T_Ag2{Agente 2}
-    
-    T_Ag1 --> FinalX[Output: X]
-    T_Ag2 --> FinalY[Output: Y]
-
-    %% Definição de Estilos
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    classDef subgraph_style fill:#fff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
-    class Q_Learning subgraph_style;
+Gostei, mas quero uma pequena mudança: quero que antes dos termos "-10", "-10" se conectarem ao termo "Terminal", eles se conectem, ainda dentro da área "Q-Learning", a um termo chamado Q-Table1 (os "+10" e "-10" da esquerda) e a um termo chamado Q-Table1 (os "+10" e "-10" da direita). Após isso, ambos os termos "Q-Table" se conectam ao termo "Terminal".
 ```
 
 ## Technical details
