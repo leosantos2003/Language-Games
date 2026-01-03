@@ -58,29 +58,29 @@ When interacting with newly trained agents, they will offer different responses 
 ```mermaid
 graph TD
     %% --- INÍCIO ---
-    Start((Início)) --> Ag1{Agente 1}
-    Start --> Ag2{Agente 2}
+    Start((Training)) --> Ag1{Builder}
+    Start --> Ag2{Observer}
 
     %% --- ÁREA Q-LEARNING ---
     subgraph Q_Learning [Q-Learning]
         direction TB
         
         %% Caminho do Agente 1
-        Ag1 --> InputZ_A1[Input: Z]
-        InputZ_A1 -- Output: X --> Pos1[+10]
-        InputZ_A1 -- Output: Y --> Neg1[-10]
+        Ag1 --> InputZ_A1["Slab!"]
+        InputZ_A1 -- deliver_object --> Pos1[+10]
+        InputZ_A1 -- write_down --> Neg1[-10]
         
         %% Agente 1 atualiza a Q-Table 1
-        Pos1 --> QT1[Q-Table 1]
+        Pos1 --> QT1[Builder's Q-Table]
         Neg1 --> QT1
 
         %% Caminho do Agente 2
-        Ag2 --> InputZ_A2[Input: Z]
-        InputZ_A2 -- Output: Y --> Pos2[+10]
-        InputZ_A2 -- Output: X --> Neg2[-10]
+        Ag2 --> InputZ_A2["Slab!"]
+        InputZ_A2 -- deliver_object --> Pos2[-10]
+        InputZ_A2 -- write_down --> Neg2[+10]
 
         %% Agente 2 atualiza a Q-Table 2
-        Pos2 --> QT2[Q-Table 2]
+        Pos2 --> QT2[Observer's Q-Table]
         Neg2 --> QT2
     end
 ```
@@ -89,21 +89,21 @@ graph TD
 graph TD
     %% --- NÓ EXTERNO ---
     %% Nó "Início" fora da área, conectando-se ao "Usuário" dentro
-    NewStart((Início)) --> User[Usuário]
+    NewStart((Interaction)) --> User[User]
 
     %% --- NOVA ÁREA TERMINAL ---
     subgraph TerminalArea [Terminal]
         direction TB
         %% O antigo nó "Terminal" agora é "Usuário" e está aqui dentro
-        User --> Term_Input[Input: Z]
+        User --> Term_Input["Slab!"]
         
         %% Decisões Finais
-        Term_Input --> T_Ag1{Agente 1}
-        Term_Input --> T_Ag2{Agente 2}
+        Term_Input --> T_Ag1{Builder}
+        Term_Input --> T_Ag2{Observer}
         
         %% Outputs Finais
-        T_Ag1 --> FinalX[Output: X]
-        T_Ag2 --> FinalY[Output: Y]
+        T_Ag1 --> FinalX[> Builder delivers you the physical object.]
+        T_Ag2 --> FinalY[> Observer writes it down.]
     end
 ```
 ## Technical details
