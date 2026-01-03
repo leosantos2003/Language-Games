@@ -74,13 +74,16 @@ graph TD
         Ag2 --> InputZ_A2[Input: Z]
         InputZ_A2 -- Output: Y --> Pos2[+10]
         InputZ_A2 -- Output: X --> Neg2[-10]
+
+        %% Transição para as Q-Tables
+        Pos1 --> Term[Q-Tables]
+        Neg1 --> Term
+        Pos2 --> Term
+        Neg2 --> Term
     end
 
-    %% Transição para a Fase Terminal
-    Pos1 --> Term[Terminal]
-    Neg1 --> Term
-    Pos2 --> Term
-    Neg2 --> Term
+    %% Transição para as Q-Tables
+    Term[Q-Tables] --> Term[Terminal]
 
     %% Fase Terminal
     Term --> Term_Input[Input: Z]
