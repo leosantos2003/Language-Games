@@ -67,8 +67,8 @@ graph TD
         
         %% Caminho do Agente 1
         Ag1 --> InputZ_A1["Slab!"]
-        InputZ_A1 -- deliver_object --> Pos1[+10]
-        InputZ_A1 -- write_down --> Neg1[-10]
+        InputZ_A1 -- deliver_object --> Pos1[+10]:::greenish
+        InputZ_A1 -- write_down --> Neg1[-10]:::reddish
         
         %% Agente 1 atualiza a Q-Table 1
         Pos1 --> QT1[Builder's Q-Table]
@@ -76,8 +76,8 @@ graph TD
 
         %% Caminho do Agente 2
         Ag2 --> InputZ_A2["Slab!"]
-        InputZ_A2 -- deliver_object --> Pos2[-10]
-        InputZ_A2 -- write_down --> Neg2[+10]
+        InputZ_A2 -- deliver_object --> Pos2[-10]:::reddish
+        InputZ_A2 -- write_down --> Neg2[+10]:::greenish
 
         %% Agente 2 atualiza a Q-Table 2
         Pos2 --> QT2[Observer's Q-Table]
