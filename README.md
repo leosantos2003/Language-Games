@@ -6,6 +6,8 @@ This project consists of demonstrating some of the main concepts created by the 
 
 To demonstrate the computationally applicable nature of these concepts, two agents were created and subjected to the Q-Learning reinforcement learning algorithm, resulting in different reactions to the same inputs. This procedure will serve as a basis for demonstrating the following Wittgensteinian concepts: the primitive language of builders, language games and their multiplicity, the meaning of language as use, and language learning as training.
 
+**This is merely an exercise in exploring intersections between Computer Science and other fields of knowledge. It is subject to disagreements and more rigorous technical analysis.**
+
 ## Theoretical foundation
 
 First, two agents were created, named "Builder" and "Observer." Their names were inspired by passages where Wittgenstein cites examples of primitive and restricted languages, which have different functions adapted to the context in which they are used.
@@ -57,58 +59,42 @@ When interacting with newly trained agents, they will offer different responses 
 
 ```mermaid
 graph TD
-    %% --- INÍCIO ---
     Start((Training)) --> Ag1{Builder}
     Start --> Ag2{Observer}
 
-    %% --- ÁREA Q-LEARNING ---
     subgraph Q_Learning [Q-Learning]
         direction TB
         
-        %% Caminho do Agente 1
         Ag1 --> InputZ_A1["Slab!"]
         InputZ_A1 -- deliver_object --> Pos1[+10]:::greenish
         InputZ_A1 -- write_down --> Neg1[-10]:::reddish
         
-        %% Agente 1 atualiza a Q-Table 1
         Pos1 --> QT1[Builder's Q-Table]
         Neg1 --> QT1
 
-        %% Caminho do Agente 2
         Ag2 --> InputZ_A2["Slab!"]
         InputZ_A2 -- deliver_object --> Pos2[-10]:::reddish
         InputZ_A2 -- write_down --> Neg2[+10]:::greenish
 
-        %% Agente 2 atualiza a Q-Table 2
         Pos2 --> QT2[Observer's Q-Table]
         Neg2 --> QT2
     end
 
-    %% --- DEFINIÇÃO DE ESTILOS FORTES ---
-    %% Verde mais intenso com borda e texto verde-escuro
     classDef greenish fill:#b2fab4,stroke:#006400,stroke-width:2px,color:#004d00;
-    
-    %% Vermelho mais intenso com borda e texto vermelho-escuro
     classDef reddish fill:#ffb3b3,stroke:#8b0000,stroke-width:2px,color:#800000;
 ```
 
 ```mermaid
 graph TD
-    %% --- NÓ EXTERNO ---
-    %% Nó "Início" fora da área, conectando-se ao "Usuário" dentro
     NewStart((Interaction)) --> User[User]
 
-    %% --- NOVA ÁREA TERMINAL ---
     subgraph TerminalArea [Terminal]
         direction TB
-        %% O antigo nó "Terminal" agora é "Usuário" e está aqui dentro
         User --> Term_Input["Slab!"]
         
-        %% Decisões Finais
         Term_Input --> T_Ag1{Builder}
         Term_Input --> T_Ag2{Observer}
         
-        %% Outputs Finais
         T_Ag1 --> FinalX[> Builder delivers you the physical object.]
         T_Ag2 --> FinalY[> Observer writes it down.]
     end
