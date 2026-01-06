@@ -2,7 +2,7 @@
 
 ## About
 
-This project consists of demonstrating some of the main concepts created by the philosopher Ludwig Wittgenstein in his book *Philosophical Investigations (1953)*.
+This project consists of demonstrating some of the main concepts created by the philosopher Ludwig Wittgenstein in his book [*Philosophical Investigations (1953)*](https://en.wikipedia.org/wiki/Philosophical_Investigations).
 
 To demonstrate the computationally applicable nature of these concepts, two agents were created and subjected to the Q-Learning reinforcement learning algorithm, resulting in different reactions to the same inputs. This procedure will serve as a basis for demonstrating the following Wittgensteinian concepts: primitive language use, language games and their multiplicity, the meaning of language as use, and language learning as training.
 
